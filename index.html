@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liber Viator 2026 — GSR 2 Mars, Casablanca</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--or:#B8922A;--or-clair:#E8C96A;--or-pale:#F5EED5;--marbre:#F8F4EC;--encre:#1A1208;--gris:#8A8070;--blanc:#FEFCF7;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Crimson Pro',Georgia,serif;background:var(--encre);color:var(--marbre);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background 0.4s;}
+nav.scrolled{background:rgba(26,18,8,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(184,146,42,0.2);}
+.nav-logo{font-family:'Cinzel',serif;font-size:0.72rem;letter-spacing:0.22em;color:var(--or);text-decoration:none;}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.22em;color:var(--gris);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--or-clair);}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5rem 2rem 4rem;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-color:#0A0703;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:0.35;filter:sepia(0.3);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,18,8,0.7) 0%,rgba(26,18,8,0.3) 50%,rgba(26,18,8,0.85) 100%);z-index:1;}
+.hero>*:not(.hero-bg):not(.hero-overlay){position:relative;z-index:2;}
+.hero-logo{margin-bottom:2rem;opacity:0;animation:fadeUp 1s ease 0.1s forwards;}
+.hero-logo img{height:60px;max-width:280px;object-fit:contain;display:block;margin:0 auto;filter:brightness(10);mix-blend-mode:screen;}
+.hero-ornement{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--or);letter-spacing:0.4em;opacity:0;animation:fadeUp 1s ease 0.3s forwards;}
+.hero-surtitre{font-family:'Cinzel',serif;font-size:clamp(0.52rem,1.1vw,0.7rem);letter-spacing:0.3em;color:var(--or-clair);text-transform:uppercase;margin-top:1.6rem;opacity:0;animation:fadeUp 1s ease 0.5s forwards;line-height:2.2;}
+.hero h1{font-family:'Cinzel',serif;font-size:clamp(3rem,9vw,8rem);font-weight:700;line-height:1.0;color:var(--blanc);margin-top:0.6rem;opacity:0;animation:fadeUp 1s ease 0.7s forwards;text-shadow:0 4px 40px rgba(184,146,42,0.3);}
+.hero h1 em{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1em;color:var(--or-clair);display:block;}
+.hero-citation{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.05rem,2.3vw,1.55rem);color:var(--or-pale);margin-top:2rem;opacity:0;animation:fadeUp 1s ease 1s forwards;max-width:560px;}
+.hero-citation span{display:block;font-size:0.68em;font-style:normal;font-family:'Cinzel',serif;letter-spacing:0.14em;color:var(--or);margin-top:0.4rem;text-transform:uppercase;}
+.hero-divider{width:110px;height:1px;background:linear-gradient(90deg,transparent,var(--or),transparent);margin:2rem auto;opacity:0;animation:fadeIn 1s ease 1.2s forwards;}
+.hero-meta{font-family:'Cinzel',serif;font-size:clamp(0.5rem,1vw,0.65rem);letter-spacing:0.28em;color:var(--gris);text-transform:uppercase;opacity:0;animation:fadeUp 1s ease 1.3s forwards;line-height:2.4;}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:0.5rem;opacity:0;animation:fadeIn 1s ease 2s forwards;z-index:2;}
+.scroll-hint span{font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;}
+.scroll-line{width:1px;height:36px;background:linear-gradient(180deg,var(--or),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+
+/* LAYOUT */
+.sect{padding:7rem 2rem;}
+.inner{max-width:1200px;margin:0 auto;}
+.section-label{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.4em;color:var(--or);text-transform:uppercase;margin-bottom:1rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;line-height:1.1;color:var(--blanc);margin-bottom:1.5rem;}
+.section-title em{color:var(--or-clair);font-style:italic;}
+.gold-line{width:60px;height:1px;background:var(--or);margin-bottom:3rem;}
+
+/* PROJET */
+#projet{background:linear-gradient(180deg,var(--encre) 0%,#0F0B04 100%);}
+.deux-col{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.affiche-wrap{position:relative;}
+.affiche-wrap img{width:100%;display:block;border-radius:2px;box-shadow:0 40px 80px rgba(0,0,0,0.6),0 0 0 1px rgba(184,146,42,0.2);transition:transform 0.4s;}
+.affiche-wrap:hover img{transform:scale(1.02);}
+.affiche-wrap::after{content:'';position:absolute;inset:-12px;border:1px solid rgba(184,146,42,0.14);border-radius:2px;pointer-events:none;}
+.projet-p{font-size:1.1rem;line-height:1.85;color:rgba(248,244,236,0.76);margin-bottom:1.4rem;}
+.cal-row{display:flex;gap:0;border:1px solid rgba(184,146,42,0.15);overflow:hidden;margin-top:3rem;}
+.cal-item{flex:1;padding:2rem 1.2rem;border-right:1px solid rgba(184,146,42,0.1);text-align:center;}
+.cal-item:last-child{border-right:none;}
+.cal-date{font-family:'Cinzel',serif;font-size:2rem;font-weight:700;color:var(--or);line-height:1;margin-bottom:0.3rem;}
+.cal-mois{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.2em;color:var(--gris);text-transform:uppercase;margin-bottom:1rem;}
+.cal-label{font-size:0.85rem;line-height:1.5;color:rgba(248,244,236,0.52);}
+.regles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(184,146,42,0.1);border:1px solid rgba(184,146,42,0.15);margin-top:3rem;}
+.regle-item{background:#0F0B04;padding:3rem 2.5rem;transition:background 0.3s;}
+.regle-item:hover{background:rgba(184,146,42,0.05);}
+.regle-num{font-family:'Cinzel',serif;font-size:2.5rem;color:rgba(184,146,42,0.18);font-weight:700;line-height:1;margin-bottom:1rem;}
+.regle-titre{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;color:var(--or);text-transform:uppercase;margin-bottom:0.8rem;}
+.regle-texte{font-size:1rem;line-height:1.7;color:rgba(248,244,236,0.58);}
+.pdf-section{background:rgba(184,146,42,0.06);border:1px solid rgba(184,146,42,0.2);padding:2.5rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:4rem;}
+.pdf-info h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--blanc);margin-bottom:0.4rem;}
+.pdf-info p{font-size:0.9rem;color:rgba(248,244,236,0.5);}
+.pdf-btn{font-family:'Cinzel',serif;font-size:0.62rem;letter-spacing:0.2em;color:var(--encre);background:var(--or);padding:1rem 2rem;text-decoration:none;text-transform:uppercase;white-space:nowrap;transition:background 0.2s,transform 0.2s;display:inline-block;}
+.pdf-btn:hover{background:var(--or-clair);transform:translateY(-1px);}
+
+/* ÉPISODES */
+#episodes{background:#0A0703;}
+.episodes-stack{margin-top:4rem;}
+.ep-card{border-top:1px solid rgba(184,146,42,0.15);padding:3.5rem 0;display:grid;grid-template-columns:80px 1fr 240px;gap:3rem;align-items:start;transition:all 0.3s;}
+.ep-card:last-child{border-bottom:1px solid rgba(184,146,42,0.15);}
+.ep-card:hover{padding-left:1.5rem;padding-right:1.5rem;background:rgba(184,146,42,0.02);}
+.ep-num{font-family:'Cinzel',serif;font-size:3rem;font-weight:700;color:rgba(184,146,42,0.18);line-height:1;padding-top:0.2rem;}
+.ep-perso{font-family:'Cinzel',serif;font-size:0.58rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;margin-bottom:0.5rem;}
+.ep-titre{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:600;color:var(--blanc);margin-bottom:1rem;font-style:italic;}
+.ep-extrait{font-size:1rem;line-height:1.75;color:rgba(248,244,236,0.48);max-width:520px;}
+.ep-latin{background:rgba(184,146,42,0.06);border:1px solid rgba(184,146,42,0.14);padding:1.5rem;border-radius:2px;}
+.ep-latin-label{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.25em;color:var(--or);text-transform:uppercase;margin-bottom:0.6rem;}
+.ep-latin p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:0.95rem;line-height:1.65;color:rgba(248,244,236,0.68);}
+
+/* GALERIE */
+#eleves{background:linear-gradient(180deg,#0A0703 0%,var(--encre) 100%);}
+.galerie{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:3px;margin-top:3rem;}
+.gal-item{overflow:hidden;position:relative;aspect-ratio:3/4;background:#0F0B04;}
+.gal-item img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform 0.6s;filter:sepia(0.08) brightness(0.9);}
+.gal-item:hover img{transform:scale(1.04);filter:sepia(0) brightness(1);}
+.gal-cap{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem 1.2rem;background:linear-gradient(0deg,rgba(26,18,8,0.9) 0%,transparent 100%);font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.25em;color:var(--or-clair);text-transform:uppercase;opacity:0;transition:opacity 0.3s;}
+.gal-item:hover .gal-cap{opacity:1;}
+
+/* VOLUBILIS */
+#volubilis{background:var(--encre);}
+.vol-intro{font-size:1.1rem;line-height:1.85;color:rgba(248,244,236,0.68);max-width:700px;}
+.vol-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:280px 280px;gap:3px;margin-top:3rem;}
+.vol-item{overflow:hidden;position:relative;background:#0A0703;}
+.vol-item:first-child{grid-column:span 2;}
+.vol-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s;filter:brightness(0.88);}
+.vol-item:hover img{transform:scale(1.05);filter:brightness(1);}
+.vol-label{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.2rem 1rem;background:linear-gradient(0deg,rgba(26,18,8,0.85) 0%,transparent 100%);font-family:'Cinzel',serif;font-size:0.5rem;letter-spacing:0.2em;color:var(--or-clair);text-transform:uppercase;}
+@media(max-width:900px){.vol-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto;}.vol-item:first-child{grid-column:span 2;height:220px;}.vol-item{height:160px;}}
+
+/* ÉQUIPE */
+#equipe{background:#0A0703;}
+.equipe-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(184,146,42,0.1);margin-top:4rem;}
+.membre{background:#0A0703;padding:3rem 2.5rem;border-bottom:3px solid transparent;transition:all 0.3s;}
+.membre:hover{border-bottom-color:var(--or);background:rgba(184,146,42,0.04);}
+.membre-role{font-family:'Cinzel',serif;font-size:0.52rem;letter-spacing:0.3em;color:var(--or);text-transform:uppercase;margin-bottom:0.8rem;}
+.membre-nom{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--blanc);margin-bottom:0.4rem;}
+.membre-detail{font-size:0.88rem;color:rgba(248,244,236,0.4);line-height:1.65;}
+
+/* FOOTER */
+footer{border-top:1px solid rgba(184,146,42,0.15);padding:4rem 2rem;text-align:center;background:#050301;}
+.footer-logo-wrap{margin-bottom:1.8rem;}
+.footer-logo-wrap img{height:50px;max-width:240px;object-fit:contain;display:inline-block;filter:brightness(10);mix-blend-mode:screen;opacity:0.6;}
+.footer-titre{font-family:'Cinzel',serif;font-size:clamp(0.9rem,2.5vw,1.5rem);letter-spacing:0.2em;color:var(--or);margin-bottom:0.8rem;}
+.footer-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--gris);margin-bottom:2rem;}
+.footer-aefe{font-family:'Cinzel',serif;font-size:0.48rem;letter-spacing:0.28em;color:rgba(138,128,112,0.35);text-transform:uppercase;}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes scrollPulse{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+
+@media(max-width:900px){
+  .deux-col{grid-template-columns:1fr;gap:3rem;}
+  .regles-grid{grid-template-columns:1fr;}
+  .ep-card{grid-template-columns:60px 1fr;}
+  .ep-latin{grid-column:2;}
+  .galerie{grid-template-columns:1fr 1fr;}
+  .equipe-grid{grid-template-columns:1fr;}
+  .cal-row{flex-direction:column;}
+  .nav-links{display:none;}
+  .pdf-section{flex-direction:column;text-align:center;}
+  .vol-cols{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="#" class="nav-logo">Liber Viator · GSR 2 Mars</a>
+  <ul class="nav-links">
+    <li><a href="#projet">Le Projet</a></li>
+    <li><a href="#episodes">Épisodes</a></li>
+    <li><a href="#eleves">Atelier</a></li>
+    <li><a href="#volubilis">Volubilis</a></li>
+    <li><a href="#equipe">Équipe</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg">
+    <img src="img/e1.jpg" alt="">
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-logo">
+    <img src="img/logo.jpg" alt="Groupe Scolaire La Résidence · AEFE">
+  </div>
+  <div class="hero-ornement">❧ &nbsp; AEFE · Semaine des LCA 2026 &nbsp; ❧</div>
+  <div class="hero-surtitre">
+    Groupe Scolaire La Résidence · Site du 2 Mars · Casablanca<br>
+    Classe de Seconde 201
+  </div>
+  <h1>Liber<br><em>Viator</em></h1>
+  <div class="hero-citation">
+    « Amor fortem facit et fata vincit »
+    <span>L'amour rend courageux et triomphe du destin</span>
+  </div>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">
+    Volume II · L'Amour, tout un roman · Volubilis, Maurétanie Tingitane · IIe siècle<br>
+    Projet porté par M. Slaoui Habib Ahmed · Sous la direction de Mme Lasri et Mme Bencheikh
+  </div>
+  <div class="scroll-hint">
+    <span>Découvrir</span>
+    <div class="scroll-line"></div>
+  </div>
+</div>
+
+<!-- PROJET -->
+<div id="projet" class="sect">
+  <div class="inner deux-col">
+    <div class="affiche-wrap reveal">
+      <img src="img/affiche.jpg" alt="Affiche Liber Viator 2026">
+    </div>
+    <div>
+      <div class="section-label reveal">Présentation</div>
+      <h2 class="section-title reveal">L'Amour,<br><em>tout un roman</em></h2>
+      <div class="gold-line reveal"></div>
+      <p class="projet-p reveal">Le <strong>Liber Viator</strong> est un roman collectif AEFE qui voyage à travers le monde. Chaque établissement rédige des épisodes mettant en scène Titus et Chloé, deux âmes séparées dans l'Antiquité romaine, dont l'histoire se reconstitue de pays en pays jusqu'à la publication mondiale du 18 mai 2026.</p>
+      <p class="projet-p reveal">Pour l'édition 2026, le GSR 2 Mars a ancré son récit à <strong>Volubilis</strong>, cité romaine antique du Maroc. Trois épisodes ont été produits lors d'ateliers d'écriture narrative avec la <strong>Seconde 201</strong>, sous la direction de Mme Djamila Lasri et Mme Kawtar Bencheikh. Le projet est porté par M. Slaoui Habib Ahmed, avec la collaboration de Mme Chérifa Belghit, CPE.</p>
+      <p class="projet-p reveal">Ligne directrice : <em>« Amor fortem facit et fata vincit »</em>, exergue de chacun des chapitres.</p>
+      <div class="cal-row reveal">
+        <div class="cal-item"><div class="cal-date">30</div><div class="cal-mois">Avril</div><div class="cal-label">Limite d'inscription</div></div>
+        <div class="cal-item"><div class="cal-date">10</div><div class="cal-mois">Mai</div><div class="cal-label">Envoi des productions</div></div>
+        <div class="cal-item"><div class="cal-date">18</div><div class="cal-mois">Mai</div><div class="cal-label">Publication AEFE</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="inner" style="margin-top:6rem;">
+    <div class="section-label reveal" style="text-align:center;">Règlement</div>
+    <h2 class="section-title reveal" style="text-align:center;">Productions <em>attendues</em></h2>
+    <div class="gold-line reveal" style="margin:0 auto 0;"></div>
+    <div class="regles-grid">
+      <div class="regle-item reveal d1"><div class="regle-num">01</div><div class="regle-titre">Épisode en français</div><div class="regle-texte">1 à 2 pages, Arial 14. Écriture individuelle ou collective. Le cadre spatial correspond à la ville ou au pays de l'établissement.</div></div>
+      <div class="regle-item reveal d2"><div class="regle-num">02</div><div class="regle-titre">Résumé en latin</div><div class="regle-texte">Un court résumé en latin classique (ou grec ancien), liant le récit à l'Antiquité romaine et aux exigences LCA du projet.</div></div>
+      <div class="regle-item reveal d3"><div class="regle-num">03</div><div class="regle-titre">Illustration libre</div><div class="regle-texte">Une illustration emblématique de la ville ou du pays, intégrant si possible les ombres des personnages de Titus et Chloé.</div></div>
+    </div>
+
+    <div class="pdf-section reveal">
+      <div class="pdf-info">
+        <h3>Liber Viator · Dossier complet</h3>
+        <p>Les trois épisodes · Résumés en latin · M. Slaoui Habib Ahmed · GSR 2 Mars · Seconde 201</p>
+      </div>
+      <a href="Liber_Viator_GSR_2Mars_2026.pdf" download class="pdf-btn">Télécharger le PDF</a>
+    </div>
+  </div>
+</div>
+
+<!-- ÉPISODES -->
+<div id="episodes" class="sect">
+  <div class="inner">
+    <div class="section-label reveal">GSR 2 Mars · Classe de Seconde 201</div>
+    <h2 class="section-title reveal">Nos contributions <em>authentiques</em></h2>
+    <div class="gold-line reveal"></div>
+    <p class="reveal" style="font-size:1.05rem;line-height:1.85;color:rgba(248,244,236,0.65);max-width:700px;margin-bottom:0;">Trois épisodes rédigés lors d'ateliers d'écriture narrative avec la Seconde 201 du GSR 2 Mars. M. Slaoui Habib Ahmed · Mme Chérifa Belghit.</p>
+    <div class="episodes-stack">
+      <div class="ep-card reveal">
+        <div class="ep-num">I</div>
+        <div>
+          <div class="ep-perso">Titus</div>
+          <div class="ep-titre">Le Sang de Volubilis</div>
+          <div class="ep-extrait">Titus arrive à Volubilis guidé par une rumeur : une esclave aux yeux de nuit, vendue au bout du monde romain. Il retrouve Chloé, apprend sa condamnation à mort, et s'inscrit clandestinement aux jeux sous le nom de Taurus. Guidé par Mazigh, ancien gladiateur berbère, il combat trois fois et gagne, non par la force, mais par l'amour.</div>
+        </div>
+        <div class="ep-latin">
+          <div class="ep-latin-label">Résumé latin</div>
+          <p>Titus, pastor Romanus, Volubilim advenit ut Chloen quaerat. Ibi Chloe, veneni accusata, ad mortem damnata est. Titus ter pugnat et vincit. Lege antiqua, Chloen liberat. Amor fortem facit et fata vincit.</p>
+        </div>
+      </div>
+      <div class="ep-card reveal">
+        <div class="ep-num">II</div>
+        <div>
+          <div class="ep-perso">Chloé</div>
+          <div class="ep-titre">La Nuit dans la maison de Marius</div>
+          <div class="ep-extrait">Chloé observe, se tait, survit. Elle voit l'empoisonneur mais pas à temps. Accusée à tort, jetée en cellule, elle pense dans le noir à son père, aux citrons de Tyr, et à ce berger au regard franc qu'elle a failli arrêter dans le péristyle.</div>
+        </div>
+        <div class="ep-latin">
+          <div class="ep-latin-label">Résumé latin</div>
+          <p>Chloe, ancilla orientalis, vitam servitutis tacite tolerat. Hospes ignotus venenum miscet et moritur. Chloe, innocens, accusatur et in carcerem mittitur. In tenebris patrem suavemque memoriam recordatur.</p>
+        </div>
+      </div>
+      <div class="ep-card reveal">
+        <div class="ep-num">III</div>
+        <div>
+          <div class="ep-perso">Chloé</div>
+          <div class="ep-titre">La Femme libre de Volubilis</div>
+          <div class="ep-extrait">La porte s'ouvre sur la lumière blanche du midi africain. Chloé marche droite vers l'arène. Elle voit Titus, blessé, vivant, le bras levé. Le magistrat prononce sa liberté. Ils marchent ensemble dans Volubilis, sans encore se parler, fato coniuncti.</div>
+        </div>
+        <div class="ep-latin">
+          <div class="ep-latin-label">Résumé latin</div>
+          <p>E carcere educta, Chloe Titum victorem videt. Magistratus eam liberam pronuntiat. Postridie tabula lignea ei datur : liberta est. Simul per vias Volubilis ambulant, fato coniuncti.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALERIE ÉLÈVES -->
+<div id="eleves" class="sect">
+  <div class="inner">
+    <div class="section-label reveal">Atelier d'écriture narrative</div>
+    <h2 class="section-title reveal">La classe de <em>Seconde 201</em></h2>
+    <div class="gold-line reveal"></div>
+    <p class="reveal" style="font-size:1.1rem;line-height:1.85;color:rgba(248,244,236,0.68);max-width:700px;">Les épisodes ont été élaborés lors d'ateliers d'écriture narrative avec la Seconde 201 du GSR 2 Mars, Casablanca, sous la direction de M. Slaoui Habib Ahmed, avec la collaboration de Mme Chérifa Belghit, CPE.</p>
+    <div class="galerie reveal">
+      <div class="gal-item">
+        <img src="img/e1.jpg" alt="Atelier d'écriture Seconde 201">
+        <div class="gal-cap">Atelier d'écriture narrative · Seconde 201</div>
+      </div>
+      <div class="gal-item">
+        <img src="img/e2.jpg" alt="Élèves en atelier GSR 2 Mars">
+        <div class="gal-cap">GSR 2 Mars · Casablanca</div>
+      </div>
+      <div class="gal-item">
+        <img src="img/e3.jpg" alt="Rédaction collective Liber Viator">
+        <div class="gal-cap">Liber Viator 2026</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VOLUBILIS -->
+<div id="volubilis" class="sect">
+  <div class="inner">
+    <div class="section-label reveal">Cadre spatial</div>
+    <h2 class="section-title reveal"><em>Volubilis</em> · Maurétanie Tingitane</h2>
+    <div class="gold-line reveal"></div>
+    <p class="vol-intro reveal">Ancienne cité romaine du nord du Maroc, Volubilis fut l'une des villes les plus importantes de la province de Maurétanie Tingitane. Ses mosaïques, son arc de triomphe et ses colonnes dressées sous le soleil africain constituent le décor de l'odyssée de Titus et Chloé. Site classé au patrimoine mondial de l'UNESCO.</p>
+    <div class="vol-grid reveal">
+      <div class="vol-item">
+        <img src="img/vol1.jpg" alt="Colonnes de Volubilis au coucher du soleil">
+        <div class="vol-label">Colonnes du Capitole · Coucher de soleil</div>
+      </div>
+      <div class="vol-item">
+        <img src="img/vol2.jpg" alt="Arc de triomphe de Volubilis">
+        <div class="vol-label">Arc de triomphe · IIIe siècle</div>
+      </div>
+      <div class="vol-item">
+        <img src="img/vol3.jpg" alt="Mosaïque romaine de Volubilis">
+        <div class="vol-label">Mosaïque romaine · IIe siècle</div>
+      </div>
+      <div class="vol-item">
+        <img src="img/vol4.jpg" alt="Basilique de Volubilis vue large">
+        <div class="vol-label">La Basilique · Forum de Volubilis</div>
+      </div>
+      <div class="vol-item">
+        <img src="img/vol5.jpg" alt="Arches de la basilique de Volubilis">
+        <div class="vol-label">Arches de la Basilique</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ÉQUIPE -->
+<div id="equipe" class="sect">
+  <div class="inner">
+    <div class="section-label reveal">L'équipe pédagogique</div>
+    <h2 class="section-title reveal">Projet porté par <em>M. Slaoui</em></h2>
+    <div class="gold-line reveal"></div>
+    <div class="equipe-grid">
+      <div class="membre reveal d1">
+        <div class="membre-role">Direction</div>
+        <div class="membre-nom">Mme Djamila Lasri</div>
+        <div class="membre-detail">Proviseure<br>GSR · Site du 2 Mars · Casablanca</div>
+      </div>
+      <div class="membre reveal d2">
+        <div class="membre-role">Direction adjointe</div>
+        <div class="membre-nom">Mme Kawtar Bencheikh</div>
+        <div class="membre-detail">Proviseure adjointe<br>GSR · Site du 2 Mars · Casablanca</div>
+      </div>
+      <div class="membre reveal d3">
+        <div class="membre-role">Professeur certifié</div>
+        <div class="membre-nom">M. Slaoui Habib Ahmed</div>
+        <div class="membre-detail">Porteur du projet Liber Viator 2026<br>GSR · Site du 2 Mars · Casablanca</div>
+      </div>
+      <div class="membre reveal d1">
+        <div class="membre-role">Collaboration</div>
+        <div class="membre-nom">Mme Chérifa Belghit</div>
+        <div class="membre-detail">Conseillère Principale d'Éducation<br>Co-animatrice des ateliers · Seconde 201</div>
+      </div>
+      <div class="membre reveal d2">
+        <div class="membre-role">EF2D · Zone Maroc</div>
+        <div class="membre-nom">Mme Caroline Bertelle</div>
+        <div class="membre-detail">Collaboration au projet Liber Viator<br>Zone Maroc</div>
+      </div>
+      <div class="membre reveal d3">
+        <div class="membre-role">EF2D · Zone Singapour</div>
+        <div class="membre-nom">M. Mehdi Zennaf</div>
+        <div class="membre-detail">Collaboration au projet Liber Viator<br>Zone Singapour</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo-wrap">
+    <img src="img/logo.jpg" alt="Groupe Scolaire La Résidence · AEFE">
+  </div>
+  <div class="footer-titre">Liber Viator · Volume II</div>
+  <div class="footer-sub">L'Amour, tout un roman · Volubilis, Maurétanie Tingitane</div>
+  <div class="footer-aefe">Groupe Scolaire La Résidence · Site du 2 Mars · Casablanca, Maroc · AEFE 2026</div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>80);});
+const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
